@@ -42,7 +42,7 @@
 		var clr_change;
 		function animate(){
 			ball();
-			if(g%800==0){
+			if(g%1000==0){
 				h++;
 				y=0;
 				i=1;
@@ -63,8 +63,7 @@
 		}
 
 			function obj1(){
-				status(game_over);
-            	if(i==360){
+				if(i==360){
             		i=0;
             	}
                 cxt.translate(256,y-300);
@@ -135,12 +134,12 @@
                 		game_over=true;
                 	}
                 }
+                status(game_over);
                 y++;
                 i++;
             };
 
             function obj2(){
-            	status(game_over);
             	if(i==360){
             		i=0;
             	}
@@ -205,12 +204,12 @@
                 		game_over=true;
                 	}
                 }
+                status(game_over);
                 y++;
                 i++;
             };
         
             function obj3(){
-            	status(game_over);
             	if(i==360){
             		i=0;
             	}
@@ -258,12 +257,12 @@
                 		game_over=true;
                 	}
                 }
+                status(game_over);
                 y++;
                 i++;
             };
 
             function obj4(){
-            	status(game_over);
             	if(i==360){
             		i=0;
             	}
@@ -301,17 +300,17 @@
              	
              	arc_btm_clr=btm_clr(i);
                 
-                if(x>=y-200-25   && x<=y-200+25  ){
+                if(x>=y-200-50   && x<=y-200+50 ){
                 	if(changed!=arc_btm_clr){
                 		game_over=true;
                 	}
                 }
+                status(game_over);
                 y++;
                 i++;
             };
             
             function obj5(){
-            	status(game_over);
             	if(i==360){
             		i=0;
             	}
@@ -356,12 +355,12 @@
                 		game_over=true;
                 	}
                 }
+                status(game_over);
                 y++;
                 i++;
             };
 
             function obj6(){
-            	status(game_over);
             	if(i==360){
             		i=0;
             	}
@@ -458,6 +457,7 @@
                 		game_over=true;
                 	}
                 }
+                status(game_over);
                 y++;
                 i++;
             };
@@ -506,6 +506,10 @@
             cxt.stroke();
             x=x+2;
             cxt.restore(); 
+            if(x>850){
+            	game_over=true;
+            	status(game_over);
+            }
         };
 
         
@@ -527,10 +531,10 @@
         }
 
         function jump(){
-            x=x-75;
+            x=x-40;
             cxt.arc(256,x,10,0,2*Math.PI);
             x++;
-            canvas.scrollBy(0,-100);
+            //canvas.scrollBy(0,-30);
             var jsound = new Audio();
             jsound.src="Bounce.mp3";
             jsound.play();
