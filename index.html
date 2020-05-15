@@ -35,6 +35,8 @@
         var ball_color=["red","purple","yellow","blue"];
         var changed;
         var game_over=false;
+        var arc_btm_clr;
+        var arc_top_clr;
 
     	var a=[];
 		var h=-1;
@@ -63,9 +65,7 @@
 		}
 
 			function obj1(){
-				if(i==360){
-            		i=0;
-            	}
+				status(game_over);
                 cxt.translate(256,y-300);
                 cxt.rotate((i)*0.02);
                 cxt.translate( -256, -y+300   );
@@ -121,29 +121,27 @@
                 point(y-300);
                 shift(y);
 
-                arc_btm_clr=btm_clr(i);
-                arc_top_clr=top_clr(i);
+               	arc_btm_clr=btm_clr(i);
+               	arc_top_clr=top_clr(i);
                 
                 if(x>=y-300+80   && x<=y-300+110  ){
                 	if(changed!=arc_btm_clr){
                 		game_over=true;
                 	}
                 }
+
                 if(x<=y-300-80   && x>=y-300-110  ){
                 	if(changed!=arc_top_clr){
                 		game_over=true;
                 	}
                 }
-                status(game_over);
-                y++;
-                i++;
+               y++;
+               i++;
             };
 
             function obj2(){
-            	if(i==360){
-            		i=0;
-            	}
-                cxt.translate(356,y-300);
+            	status(game_over);
+            	cxt.translate(356,y-300);
                 cxt.rotate(i*0.02);
                 cxt.translate( -356, -y+300);
                 cxt.beginPath();
@@ -197,28 +195,25 @@
                 shift(y);
                 point(y -100-300);
                 
-                arc_btm_clr=btm_clr(i);
+              	arc_btm_clr=btm_clr(i-360);
                 
                 if(x>=y-300-5   && x<=y-300+5  ){
                 	if(changed!=arc_btm_clr){
                 		game_over=true;
                 	}
                 }
-                status(game_over);
                 y++;
                 i++;
             };
         
             function obj3(){
-            	if(i==360){
-            		i=0;
-            	}
-                cxt.translate(256,y-500 +150);
+            	status(game_over);
+            	cxt.translate(256,y-500 +150);
                 cxt.rotate(-i*0.02);
                 cxt.translate( -256, -y+500  -150 );
                 cxt.beginPath();
                 cxt.moveTo(151, y-500 +50);
-                cxt.strokeStyle="yellow";
+                cxt.strokeStyle="blue";
                 cxt.lineWidth = 10;
                 cxt.lineTo(351, y-500 +50);
                 cxt.stroke();
@@ -230,13 +225,13 @@
                 cxt.stroke();
                 cxt.beginPath();
                 cxt.moveTo(356, y-500 +250);
-                cxt.strokeStyle="blue";
+                cxt.strokeStyle="purple";
                 cxt.lineWidth = 10;
                 cxt.lineTo(151, y-500 +250);
                 cxt.stroke();
                 cxt.beginPath();
                 cxt.moveTo(156, y-500 +255);
-                cxt.strokeStyle="purple";
+                cxt.strokeStyle="yellow";
                 cxt.lineWidth = 10;
                 cxt.lineTo(156, y-500 +55);
                 cxt.stroke()
@@ -246,9 +241,11 @@
                 shift(y);
 
                 arc_btm_clr=btm_clr(i);
-                arc_top_clr=top_clr(i);
+               	arc_top_clr=top_clr(i);
+
                 if(x>=y+250-500   && x<=y+270-500  ){
                 	if(changed!=arc_btm_clr){
+                		
                 		game_over=true;
                 	}
                 }
@@ -257,41 +254,38 @@
                 		game_over=true;
                 	}
                 }
-                status(game_over);
                 y++;
                 i++;
             };
 
             function obj4(){
-            	if(i==360){
-            		i=0;
-            	}
-                cxt.translate(206,y-200);
-                cxt.rotate(i*0.02);
+            	status(game_over);
+            	cxt.translate(206,y-200);
+                cxt.rotate(-i*0.02);
                 cxt.translate( -206, -y+200);
                 cxt.beginPath();
                 cxt.moveTo(206, y-200);
-                cxt.strokeStyle="yellow";
+                cxt.strokeStyle="red";
                 cxt.lineWidth = 10;
-                cxt.lineTo( 206+50, y-200 -50);
+                cxt.lineTo( 206, y-200 -50);
                 cxt.stroke();    
                 cxt.beginPath();
                 cxt.moveTo(206, y-200 );
                 cxt.strokeStyle="blue";
                 cxt.lineWidth = 10;
-                cxt.lineTo(206-50, y-200 -50);
+                cxt.lineTo(206-50, y-200);
                 cxt.stroke();
                 cxt.beginPath();
                 cxt.moveTo(206, y-200 );
-                cxt.strokeStyle="red";
+                cxt.strokeStyle="yellow";
                 cxt.lineWidth = 10;
-                cxt.lineTo(206-50, y-200 +50);
+                cxt.lineTo(206, y-200 +50);
                 cxt.stroke();
                 cxt.beginPath();
                 cxt.moveTo(206, y-200 );
                 cxt.strokeStyle="purple";
                 cxt.lineWidth = 10;
-                cxt.lineTo(206+50, y-200 +50);
+                cxt.lineTo(206+50, y-200);
                 cxt.stroke();
                 cxt.resetTransform();
                 cxt.restore();
@@ -300,21 +294,18 @@
              	
              	arc_btm_clr=btm_clr(i);
                 
-                if(x>=y-200-50   && x<=y-200+50 ){
+                if(x>=y-200-20   && x<=y-200+20 ){
                 	if(changed!=arc_btm_clr){
                 		game_over=true;
                 	}
                 }
-                status(game_over);
                 y++;
                 i++;
             };
             
             function obj5(){
-            	if(i==360){
-            		i=0;
-            	}
-                cxt.translate(256,y-300);
+            	status(game_over);
+            	cxt.translate(256,y-300);
                 cxt.rotate((i)*0.02);
                 cxt.translate( -256, -y+300);
                 cxt.beginPath();
@@ -343,7 +334,7 @@
                 shift(y);
                 
                 arc_btm_clr=btm_clr(i);
-                arc_top_clr=top_clr(i);
+               	arc_top_clr=top_clr(i);
                 
                 if(x>=y-300+90   && x<=y-300+110  ){
                 	if(changed!=arc_btm_clr){
@@ -355,16 +346,13 @@
                 		game_over=true;
                 	}
                 }
-                status(game_over);
                 y++;
                 i++;
             };
 
             function obj6(){
-            	if(i==360){
-            		i=0;
-            	}
-                cxt.translate(256,y-300);
+            	status(game_over);
+            	cxt.translate(256,y-300);
                 cxt.rotate((i)*0.02);
                 cxt.translate( -256, -y+300);
                 cxt.beginPath();
@@ -445,51 +433,68 @@
                 shift(y);
                 
                 arc_btm_clr=btm_clr(i);
-                arc_top_clr=top_clr(i);
+               	arc_top_clr=top_clr(i);
                 
-                if(x>=y+60   && x<=y+110  ){
+                if(x>=y-300+60   && x<=y-300+110  ){
                 	if(changed!=arc_btm_clr){
                 		game_over=true;
                 	}
                 }
-                if(x<=y-60   && x>=y-110  ){
+                if(x<=y-300-60   && x>=y-300-110  ){
                 	if(changed!=arc_top_clr){
                 		game_over=true;
                 	}
                 }
-                status(game_over);
                 y++;
                 i++;
             };
 
         function btm_clr(h){
-        	if(h>0 && h<90){
+        	if(h>=360 && h<720){
+        		h=h-360;
+        	}
+        	if(h>=720){
+        		h=h-720;
+        	}
+        	if(h>=0 && h<45){
                 	return "yellow";	
                 };
-            if(h>90 && h<180){
-               		return "blue";	
+            if(h>=45 && h<135){
+            		return "blue";	
                 };
-            if(h>180 && h<270){
+            if(h>=135 && h<225){
                		return "red";	
                 };
-            if(h>270 && h<=359){
+            if(h>=225 && h<315){
                		return "purple";	
                 };
+            if(h>=315 && h<=359){
+            		return "yellow";
+            }
         };
 
         function top_clr(v){
-        	if(v>0 && v<90){
+        	if(v>=360 && v<720){
+        		v=v-360;
+        	}
+        	if(h>=720){
+        		v=v-720;
+        	}
+        	if(v>=0 && v<45){
                		return "red";	
                 };
-            if(v>90 && v<180){
+            if(v>=45 && v<135){
                		return "purple";	
                 };
-            if(v>180 && v<270){
+            if(v>=135 && v<225){
                		return "yellow";	
                 };
-            if(v>270 && v<=359){
+            if(v>=225 && v<315){
                		return "blue";	
                 };
+            if(v>=315 && v<=359){
+            	return "red";
+            }
         };
 
         var x=400;
@@ -534,7 +539,6 @@
             x=x-40;
             cxt.arc(256,x,10,0,2*Math.PI);
             x++;
-            //canvas.scrollBy(0,-30);
             var jsound = new Audio();
             jsound.src="Bounce.mp3";
             jsound.play();
