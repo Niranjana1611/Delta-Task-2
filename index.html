@@ -21,6 +21,20 @@
     </center>
     </body>
     <script>
+    	var t;
+		var timeInterval;
+		var t1 = new Date();
+		var speed=0.02;
+
+		function startTime() {
+			var t2 = new Date();
+			t = t2 - t1;
+			if(t%10000>=0 && t%10000>=0.2){
+                speed+=0.0000001;
+               }
+			timeInterval = setTimeout(startTime, 100);
+		};
+
         const canvas=document.getElementById("canvas");
         canvas.width=window.innerWidth/3;
         canvas.height=window.innerHeight-100;
@@ -67,7 +81,7 @@
 			function obj1(){
 				status(game_over);
                 cxt.translate(256,y-300);
-                cxt.rotate((i)*0.02);
+                cxt.rotate((i)*speed);
                 cxt.translate( -256, -y+300   );
                 cxt.beginPath();
                 cxt.arc(256,y-300,100,0.25*Math.PI,0.75*Math.PI);
@@ -93,7 +107,7 @@
                 cxt.restore();
 
                 cxt.translate(256,y-300);
-                cxt.rotate(-i*0.02);
+                cxt.rotate(-i*speed);
                 cxt.translate( -256, -y+300);
                 cxt.beginPath();
                 cxt.arc(256,y-300,80,0.25*Math.PI,0.75*Math.PI);
@@ -142,7 +156,7 @@
             function obj2(){
             	status(game_over);
             	cxt.translate(356,y-300);
-                cxt.rotate(i*0.02);
+                cxt.rotate(i*speed);
                 cxt.translate( -356, -y+300);
                 cxt.beginPath();
                 cxt.arc(356,y-300,100,0.25*Math.PI,0.75*Math.PI);
@@ -168,7 +182,7 @@
                 cxt.restore();
 
                 cxt.translate(166,y-300);
-                cxt.rotate(-i*0.02);
+                cxt.rotate(-i*speed);
                 cxt.translate( -166, -y+300);
                 cxt.beginPath();
                 cxt.arc(166,y-300,80,0.25*Math.PI,0.75*Math.PI);
@@ -209,7 +223,7 @@
             function obj3(){
             	status(game_over);
             	cxt.translate(256,y-500 +150);
-                cxt.rotate(-i*0.02);
+                cxt.rotate(-i*speed);
                 cxt.translate( -256, -y+500  -150 );
                 cxt.beginPath();
                 cxt.moveTo(151, y-500 +50);
@@ -261,7 +275,7 @@
             function obj4(){
             	status(game_over);
             	cxt.translate(206,y-200);
-                cxt.rotate(-i*0.02);
+                cxt.rotate(-i*speed);
                 cxt.translate( -206, -y+200);
                 cxt.beginPath();
                 cxt.moveTo(206, y-200);
@@ -306,7 +320,7 @@
             function obj5(){
             	status(game_over);
             	cxt.translate(256,y-300);
-                cxt.rotate((i)*0.02);
+                cxt.rotate((i)*speed);
                 cxt.translate( -256, -y+300);
                 cxt.beginPath();
                 cxt.arc(256,y-300,100,0.25*Math.PI,0.75*Math.PI);
@@ -353,7 +367,7 @@
             function obj6(){
             	status(game_over);
             	cxt.translate(256,y-300);
-                cxt.rotate((i)*0.02);
+                cxt.rotate((i)*speed);
                 cxt.translate( -256, -y+300);
                 cxt.beginPath();
                 cxt.arc(256,y-300,100,0.25*Math.PI,0.75*Math.PI);
@@ -379,7 +393,7 @@
                 cxt.restore();
 
                 cxt.translate(256,y-300);
-                cxt.rotate(-i*0.02);
+                cxt.rotate(-i*speed);
                 cxt.translate( -256, -y+300);
                 cxt.beginPath();
                 cxt.arc(256,y-300,80,0.25*Math.PI,0.75*Math.PI);
@@ -405,7 +419,9 @@
                 cxt.restore();
 
                 cxt.translate(256,y-300);
-                cxt.rotate((i)*0.02);
+                cxt.rotate((i)*speed
+
+                );
                 cxt.translate( -256, -y+300);
                 cxt.beginPath();
                 cxt.arc(256,y-300,60,0.25*Math.PI,0.75*Math.PI);
@@ -473,27 +489,27 @@
             }
         };
 
-        function top_clr(v){
-        	if(v>=360 && v<720){
-        		v=v-360;
+        function top_clr(q){
+        	if(q>=360 && q<720){
+        		q=q-360;
         	}
-        	if(h>=720){
-        		v=v-720;
+        	if(q>=720){
+        		q=q-720;
         	}
-        	if(v>=0 && v<45){
-               		return "red";	
+        	if(q>=0 && q<45){
+                	return "red";	
                 };
-            if(v>=45 && v<135){
-               		return "purple";	
+            if(q>=45 && q<135){
+            		return "purple";	
                 };
-            if(v>=135 && v<225){
+            if(q>=135 && q<225){
                		return "yellow";	
                 };
-            if(v>=225 && v<315){
+            if(q>=225 && q<315){
                		return "blue";	
                 };
-            if(v>=315 && v<=359){
-            	return "red";
+            if(q>=315 && q<=359){
+            		return "red";
             }
         };
 
@@ -639,8 +655,11 @@
            	i=1;
            	y=0;
            	game_over=false;
+           	t1 = new Date();
+			speed=0.02;
            	music.play();
            	document.getElementById("points").innerHTML="0";
+           	startTime();
             start();
         };
         </script>
