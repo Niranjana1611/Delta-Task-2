@@ -209,7 +209,7 @@
                 shift(y);
                 point(y -100-300);
                 
-              	arc_btm_clr=btm_clr(i-360);
+              	arc_btm_clr=btm_clr(i);
                 
                 if(x>=y-300-5   && x<=y-300+5  ){
                 	if(changed!=arc_btm_clr){
@@ -223,29 +223,29 @@
             function obj3(){
             	status(game_over);
             	cxt.translate(256,y-500 +150);
-                cxt.rotate(-i*speed);
+                cxt.rotate(-i*0.02);
                 cxt.translate( -256, -y+500  -150 );
                 cxt.beginPath();
                 cxt.moveTo(151, y-500 +50);
-                cxt.strokeStyle="blue";
+                cxt.strokeStyle="red";
                 cxt.lineWidth = 10;
                 cxt.lineTo(351, y-500 +50);
                 cxt.stroke();
                 cxt.beginPath();
                 cxt.moveTo(351, y-500 +45);
-                cxt.strokeStyle="red";
+                cxt.strokeStyle="purple";
                 cxt.lineWidth = 10;
                 cxt.lineTo(351, y-500 +255);
                 cxt.stroke();
                 cxt.beginPath();
                 cxt.moveTo(356, y-500 +250);
-                cxt.strokeStyle="purple";
+                cxt.strokeStyle="yellow";
                 cxt.lineWidth = 10;
                 cxt.lineTo(151, y-500 +250);
                 cxt.stroke();
                 cxt.beginPath();
                 cxt.moveTo(156, y-500 +255);
-                cxt.strokeStyle="yellow";
+                cxt.strokeStyle="blue";
                 cxt.lineWidth = 10;
                 cxt.lineTo(156, y-500 +55);
                 cxt.stroke()
@@ -254,8 +254,8 @@
                	point(y+150-500);
                 shift(y);
 
-                arc_btm_clr=btm_clr(i);
-               	arc_top_clr=top_clr(i);
+                arc_btm_clr=btm_clr(i*0.02*60-8);
+               	arc_top_clr=top_clr(i*0.02*60-8);
 
                 if(x>=y+250-500   && x<=y+270-500  ){
                 	if(changed!=arc_btm_clr){
@@ -419,9 +419,7 @@
                 cxt.restore();
 
                 cxt.translate(256,y-300);
-                cxt.rotate((i)*speed
-
-                );
+                cxt.rotate((i)*speed);
                 cxt.translate( -256, -y+300);
                 cxt.beginPath();
                 cxt.arc(256,y-300,60,0.25*Math.PI,0.75*Math.PI);
@@ -657,7 +655,7 @@
            	game_over=false;
            	t1 = new Date();
 			speed=0.02;
-           	music.play();
+            music.play();
            	document.getElementById("points").innerHTML="0";
            	startTime();
             start();
